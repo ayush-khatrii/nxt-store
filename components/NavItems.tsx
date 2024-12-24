@@ -10,16 +10,8 @@ import {
 import Link from 'next/link';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
-import { RegisterLink, LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import Image from "next/image";
+import UserDropDown from "./UserDropDown";
+import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
 
 const categories = [
   "Ethnic Wear",
@@ -31,9 +23,8 @@ const categories = [
   "Lehengas",
   "Accessories"
 ];
-export default function NavItems({ isLoggedIn, user }: { isLoggedIn: boolean, user: any }) {
+export default function NavItems({ isLoggedIn, picture }: { isLoggedIn: boolean, picture: string }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  console.log(user);
   return (
     <nav className="border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-0">
@@ -61,7 +52,7 @@ export default function NavItems({ isLoggedIn, user }: { isLoggedIn: boolean, us
 
             {/* Logo */}
             <div className="flex-shrink-0">
-              <Link href="/" className="text-xl font-bold">PJCollection</Link>
+              <Link href="/" className="text-xl font-bold">PJCollections</Link>
             </div>
           </div>
 
@@ -89,54 +80,7 @@ export default function NavItems({ isLoggedIn, user }: { isLoggedIn: boolean, us
             {
               isLoggedIn ?
                 <div className="flex justify-center items-center flex-row-reverse gap-4">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      {
-                        user?.picture ?
-                          <div className="w-6 h-6 rounded-full overflow-hidden cursor-pointer">
-                            <Image
-                              width={32}
-                              height={32}
-                              src={user.picture}
-                              alt="user"
-                              className="w-full h-full object-cover"
-                            />
-
-                          </div>
-                          :
-                          <div className="cursor-pointer">
-                            <User2Icon size={20} />
-                          </div>
-                      }
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>
-                        <User />
-                        <span>
-                          Profile
-                        </span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <ShoppingBag />
-                        <span>
-                          My Orders
-                        </span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Heart />
-                        <span>
-                          My Wishlist
-                        </span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild className="group">
-                        <LogoutLink className="flex justify-center group-hover:bg-red-700 items-center text-red-500 gap-2" postLogoutRedirectURL="/">
-                          Logout <LogOut size={16} />
-                        </LogoutLink>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                  <UserDropDown picture={picture} />
                   <Link href="#cart" className="hover:text-gray-600">
                     <ShoppingCart className="h-5 w-5" />
                   </Link>

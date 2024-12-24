@@ -5,10 +5,10 @@ export default async function Navbar() {
   const isUserAuthenticated = await isAuthenticated();
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  console.log('isUserAuthenticated', isUserAuthenticated);
+
   return (
     <div>
-      <NavItems isLoggedIn={isUserAuthenticated} user={user} />
+      <NavItems isLoggedIn={isUserAuthenticated} picture={user?.picture || ""} />
     </div>
   );
 };
