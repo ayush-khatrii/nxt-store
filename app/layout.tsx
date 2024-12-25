@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { Fira_Sans } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "./AuthProvider";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/storefront/Navbar";
 
 
 const firaSans = Fira_Sans({
   // add all  weights here
-  weight: ["400", "500", "600", "700"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-fira-sans",
   subsets: ["latin"],
 });
@@ -32,7 +32,7 @@ export default function RootLayout({
             <header>
               <Navbar />
             </header>
-            <main className="max-w-7xl mx-auto my-3">
+            <main className="">
               {children}
             </main>
           </body>

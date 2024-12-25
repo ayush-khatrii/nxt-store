@@ -1,7 +1,8 @@
 import { Heart, LogOut, ShoppingBag, User2, User2Icon } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
+import Link from "next/link";
 
 export default function UserDropDown({ picture }: { picture: string }) {
   return (
@@ -19,11 +20,13 @@ export default function UserDropDown({ picture }: { picture: string }) {
         <DropdownMenuContent>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <User2 />
-            <span>
-              Profile
-            </span>
+          <DropdownMenuItem asChild>
+            <Link href="/account">
+              <User2 />
+              <span>
+                My Profile
+              </span>
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <ShoppingBag />
