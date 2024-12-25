@@ -77,7 +77,10 @@ export default function NavItems({ isLoggedIn, picture }: { isLoggedIn: boolean,
                     <div className="rounded-full p-2 border border-foreground/40">
                       <ShoppingCart className="h-5 w-5" />
                     </div>
-                    <span className="absolute -top-2 left-6 text-background h-5 flex justify-center items-center w-5 bg-red-600 rounded-full text-xs">1</span>
+                    <span
+                      className="absolute -top-2 left-6 text-background h-5 flex justify-center items-center w-5 bg-red-600 rounded-full text-xs">
+                      1
+                    </span>
                   </Link>
                 </div>
                 :

@@ -27,9 +27,9 @@ export default function RootLayout({
       <AuthProvider>
         <html lang="en">
           <body
-            className={`${firaSans.className} ${firaSans.className} antialiased`}
+            className={`${firaSans.className}  ${firaSans.className} antialiased`}
           >
-            <header>
+            <header className="lg:px-5">
               <Navbar />
             </header>
             <main className="">
