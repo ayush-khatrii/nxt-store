@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Fira_Sans } from "next/font/google";
 import "./globals.css";
-import { AuthProvider } from "./AuthProvider";
-import Navbar from "@/components/storefront/Navbar";
-
+import { ClerkProvider, } from '@clerk/nextjs';
 
 const firaSans = Fira_Sans({
   // add all  weights here
@@ -24,20 +22,17 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <AuthProvider>
+      <ClerkProvider>
         <html lang="en">
           <body
             className={`${firaSans.className}  ${firaSans.className} antialiased`}
           >
-            <header className="lg:px-5">
-              <Navbar />
-            </header>
             <main className="">
               {children}
             </main>
           </body>
         </html>
-      </AuthProvider>
+      </ClerkProvider>
     </>
   );
 }

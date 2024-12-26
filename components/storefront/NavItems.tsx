@@ -1,115 +1,110 @@
 "use client"
 
 import { useState } from "react";
-import { Menu, ShoppingCart, Search, X, User2Icon, LogOut, User, ListOrdered, Heart, ShoppingBag } from 'lucide-react';
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Menu, ShoppingCart, Search, X, User2Icon, LogOut, User, ListOrdered, Heart, ShoppingBag, Equal } from 'lucide-react';
 import Link from 'next/link';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import UserDropDown from "./UserDropDown";
-import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
 
 const categories = [
-  "Ethnic Wear",
-  "Casual Wear",
-  "Party Wear",
-  "Sarees",
+  "Co-Ord Sets",
   "Kurtis",
+  "Dresses",
   "Indo-Western",
   "Lehengas",
-  "Accessories"
 ];
-export default function NavItems({ isLoggedIn, picture }: { isLoggedIn: boolean, picture: string }) {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+export default function NavItems() {
   return (
-    <nav className="">
-      <div className="px-5">
-        <div className="flex items-center justify-between h-16">
-          {/* Mobile menu button */}
-          <div className="flex justify-between items-center">
-            <Sheet>
-              <SheetTrigger className="">
-                <div className="rounded-full p-2 border border-foreground/40">
-                  <Menu className="h-4 w-4" />
+    <nav className="lg:px-5">
+      <Sheet>
+        <div className="">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex justify-between items-center">
+              <div className="flex justify-center items-center gap-3">
+                <SheetTrigger className="block lg:hidden">
+                  <div className="">
+                    <Equal className="h-4 w-4" />
+                  </div>
+                </SheetTrigger>
+              </div>
+              <div className="flex-shrink-0 pl-2">
+                <Link href="/" className="text-xl font-bold">PJCollections</Link>
+              </div>
+
+              <SheetContent side="left" className="w-full flex justify-between items-center flex-col">
+                <div className="flex justify-center flex-col items-start gap-3 w-full">
+                  <SheetHeader className="">
+                    <SheetTitle>Explore Fashion Pick</SheetTitle>
+                  </SheetHeader>
+                  <div className="flex flex-col items-start w-full">
+                    {categories.map((category) => (
+                      <Link
+                        key={category}
+                        href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
+                        className="w-full py-3 px-2 hover:border transition-transform text-sm hover:bg-gray-100 rounded-md"
+                      >
+                        {category}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[300px]">
-                <div className="mt-6 space-y-4">
-                  {categories.map((category) => (
+              </SheetContent>
+            </div>
+            <ul className="hidden lg:flex jusctify-center items-center gap-10">
+              {
+                categories.map((category, index) => (
+                  <li key={index}>
                     <Link
                       key={category}
                       href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="block px-4 py-2 text-sm hover:bg-gray-100 rounded-md"
+                      className="w-full "
                     >
                       {category}
                     </Link>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
-
-            {/* Logo */}
-          </div>
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-xl font-bold">PJCollections</Link>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="hover:text-gray-600"
-            >
-              <div className="rounded-full p-2 border border-foreground/40">
-                {isSearchOpen ? <X className="h-5 w-5" /> :
+                  </li>
+                ))
+              }
+            </ul>
+            <div className="flex items-center space-x-4">
+              <div className='flex gap-5 md:pl-5 justify-center items-center'>
+                <div className="cursor-pointer">
                   <Search className="h-5 w-5" />
-                }
-              </div>
-            </button>
-            {
-              isLoggedIn ?
-                <div className="flex justify-center items-center flex-row-reverse gap-4">
-                  <UserDropDown picture={picture} />
+                </div>
+                <div>
                   <Link href="#cart" className="hover:text-gray-600 relative flex justify-center items-center gap-2">
-                    <div className="rounded-full p-2 border border-foreground/40">
-                      <ShoppingCart className="h-5 w-5" />
-                    </div>
+                    <ShoppingCart className="h-5 w-5" />
                     <span
-                      className="absolute -top-2 left-6 text-background h-5 flex justify-center items-center w-5 bg-red-600 rounded-full text-xs">
+                      className="absolute -top-2 left-4 text-background h-4 w-4 flex justify-center items-center bg-red-600 rounded-full text-xs">
                       1
                     </span>
                   </Link>
                 </div>
-                :
-                <div className='flex gap-2 md:pl-5 justify-center items-center'>
-                  <Button asChild variant="outline">
-                    <LoginLink>Sign in</LoginLink>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+                <SignedOut>
+                  <Button className="w-full" asChild>
+                    <Link href={"/sign-in"}>Sign in</Link>
                   </Button>
-                  <Button asChild variant="default">
-                    <RegisterLink>Sign up</RegisterLink>
-                  </Button>
-                </div>
-            }
+                </SignedOut>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Search bar */}
-        {isSearchOpen && (
-          <div className="py-4 flex justify-center items-center gap-3">
-            <Input
-              type="search"
-              placeholder="Search products..."
-              className="w-full"
-            />
-            <Button>
-              <Search className="h-5 w-5" />
-            </Button>
-          </div>
-        )}
-      </div>
+      </Sheet>
     </nav>
   )
 }

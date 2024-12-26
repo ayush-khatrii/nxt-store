@@ -1,7 +1,6 @@
 import { Heart, LogOut, ShoppingBag, User2, User2Icon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
-import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
 import Link from "next/link";
 
 export default function UserDropDown({ picture }: { picture: string }) {
@@ -41,11 +40,11 @@ export default function UserDropDown({ picture }: { picture: string }) {
             </span>
           </DropdownMenuItem>
           <DropdownMenuItem asChild className="group">
-            <LogoutLink
+            <Link href={"#logout"}
               className="flex justify-center group-hover:bg-red-700 items-center text-red-500 gap-2"
             >
               Logout <LogOut size={16} />
-            </LogoutLink>
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -1,11 +1,22 @@
+import Hero from "@/components/storefront/Hero"
+import Navbar from "@/components/storefront/Navbar"
+
 export default function storeFrontLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <section className="lg:px-10 px-3">
-      {children}
+    <section className="">
+      <header className="max-w-[90rem] mx-auto px-5 lg:px-0">
+        <Navbar />
+      </header>
+      <div>
+        <Hero />
+      </div>
+      <div className="max-w-[90rem] mx-auto ">
+        {children}
+      </div>
     </section>
   )
 }

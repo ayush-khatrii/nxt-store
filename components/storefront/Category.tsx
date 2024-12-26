@@ -27,7 +27,7 @@ const imgs = [
 
 export default function Category() {
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-16">
       <div className="flex justify-between items-center mb-5 px-4 sm:px-6 lg:px-8">
         <h2 className="font-extrabold text-xl sm:text-2xl lg:text-3xl">
           Shop by Category
