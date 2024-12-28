@@ -6,22 +6,22 @@ const imgs = [
   {
     id: 1,
     text: "Cord Sets",
-    img: "https://images.unsplash.com/photo-1662211166566-10ad3fc0244b?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    img: "https://placehold.co/1920.png"
   },
   {
     id: 2,
     text: "Kurtis",
-    img: "https://images.unsplash.com/photo-1661436170168-7ce82d649532?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    img: "https://placehold.co/1920.png"
   },
   {
     id: 3,
     text: "Dresses",
-    img: "https://images.unsplash.com/photo-1660067262025-271603ac1283?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    img: "https://placehold.co/1920.png"
   },
   {
     id: 4,
     text: "T-Shirts",
-    img: "https://images.unsplash.com/photo-1660067262025-271603ac1283?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    img: "https://placehold.co/1920.png"
   },
 ];
 
@@ -46,7 +46,7 @@ export default function Category() {
         {imgs.map((item) => (
           <div
             key={item.id}
-            className="group relative overflow-hidden aspect-square rounded-lg shadow-lg"
+            className="group relative overflow-hidden rounded-lg shadow-lg"
           >
             <img
               src={item.img}

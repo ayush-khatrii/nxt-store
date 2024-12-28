@@ -54,7 +54,7 @@ export default function NavItems() {
                       <Link
                         key={category}
                         href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="w-full py-3 px-2 hover:border transition-transform text-sm hover:bg-gray-100 rounded-md"
+                        className="w-full hover:underline py-3 px-2 hover:border transition-transform text-sm hover:bg-gray-100 rounded-md"
                       >
                         {category}
                       </Link>
@@ -70,7 +70,7 @@ export default function NavItems() {
                     <Link
                       key={category}
                       href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="w-full "
+                      className="w-full hover:text-yellow-700 transition-all duration-200 ease-in-out"
                     >
                       {category}
                     </Link>
