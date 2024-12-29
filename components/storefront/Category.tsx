@@ -28,7 +28,7 @@ const imgs = [
 export default function Category() {
   return (
     <section className="py-16">
-      <div className="flex justify-between items-center mb-5 px-4 sm:px-6 lg:px-8">
+      <div className="flex justify-between items-center mb-5">
         <h2 className="font-extrabold text-xl sm:text-2xl lg:text-3xl">
           Shop by Category
         </h2>
@@ -37,12 +37,12 @@ export default function Category() {
             href="/products/all"
             className="group inline-flex items-center gap-2 text-sm font-semibold text-blue-600 text-primary"
           >
-            Browse all Products{" "}
+            Browse all Categories{" "}
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:underline" />
           </Link>
         </Button>
       </div>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {imgs.map((item) => (
           <div
             key={item.id}

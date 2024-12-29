@@ -14,7 +14,7 @@ export default function storeFrontLayout({
       <div>
         <Hero />
       </div>
-      <div className="max-w-[90rem] mx-auto ">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         {children}
       </div>
     </section>

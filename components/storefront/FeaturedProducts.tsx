@@ -58,7 +58,7 @@ const products = [
 
 export default function FeaturedProducts() {
   return (
-    <section className="pb-10 px-4 sm:px-6 lg:px-8">
+    <section className="pb-10">
       <div className="flex justify-between items-center mb-6">
         <h2 className="font-extrabold text-xl sm:text-2xl lg:text-3xl">Featured Products</h2>
         <Button asChild variant="link">
@@ -71,7 +71,7 @@ export default function FeaturedProducts() {
           </Link>
         </Button>
       </div>
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto w-full">
+      <div className="grid gap-6 grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto w-full">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
