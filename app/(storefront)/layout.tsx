@@ -1,5 +1,6 @@
 import Hero from "@/components/storefront/Hero"
 import Navbar from "@/components/storefront/Navbar"
+import TopBanner from "@/components/storefront/TopBanner"
 
 export default function storeFrontLayout({
   children,
@@ -8,6 +9,7 @@ export default function storeFrontLayout({
 }) {
   return (
     <section className="">
+      <TopBanner />
       <header className="max-w-[90rem] mx-auto px-5 lg:px-0">
         <Navbar />
       </header>
