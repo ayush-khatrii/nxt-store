@@ -91,7 +91,7 @@ export default function NavItems() {
                           {item.submenus.map((submenu) => (
                             <li key={submenu} className="py-1">
                               <Link
-                                href={`#${submenu.toLowerCase().replace(/\s+/g, '-')}`}
+                                href={`#${submenu.toLowerCase()}`}
                                 className="hover:underline"
                               >
                                 {submenu}
