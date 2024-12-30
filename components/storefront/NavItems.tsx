@@ -1,31 +1,65 @@
-"use client"
+"use client";
 
 import { useState } from "react";
-import { Menu, ShoppingCart, Search, X, User2Icon, LogOut, User, ListOrdered, Heart, ShoppingBag, Equal } from 'lucide-react';
+import { Menu, ShoppingCart, Search, X } from 'lucide-react';
 import Link from 'next/link';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-
-const categories = [
-  "Co-Ord Sets",
-  "Kurtis",
-  "Dresses",
-  "Indo-Western",
-  "Lehengas",
-];
-
-
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+} from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+
+const navItems = [
+  {
+    title: "Women",
+    submenus: ["Dresses", "Tops", "Bottoms", "Outerwear", "Accessories"],
+  },
+  {
+    title: "Girls",
+    submenus: ["Casual Wear", "Party Wear", "School Wear"],
+  },
+  {
+    title: "About",
+    submenus: ["Our Story", "Sustainability", "Careers"],
+  },
+  {
+    title: "Indo-Western",
+    submenus: ["Kurtis", "Palazzos", "Sarees", "Fusion Wear"],
+  },
+  {
+    title: "Lehengas",
+    submenus: ["Bridal", "Party", "Festive", "Casual"],
+  },
+];
+
 export default function NavItems() {
   return (
     <nav className="lg:px-5">
@@ -35,49 +69,71 @@ export default function NavItems() {
             <div className="flex justify-between items-center">
               <div className="flex justify-center items-center gap-3">
                 <SheetTrigger className="block lg:hidden">
-                  <div className="">
-                    <Equal className="h-4 w-4" />
-                  </div>
+                  <Menu className="h-6 w-6" />
                 </SheetTrigger>
               </div>
               <div className="flex-shrink-0 pl-2">
                 <Link href="/" className="text-xl font-bold">PJCollections</Link>
               </div>
 
-              <SheetContent side="left" className="w-full flex justify-between items-center flex-col">
-                <div className="flex justify-center flex-col items-start gap-3 w-full">
-                  <SheetHeader className="">
-                    <SheetTitle>Explore Fashion Pick</SheetTitle>
-                  </SheetHeader>
-                  <div className="flex flex-col items-start w-full">
-                    {categories.map((category) => (
-                      <Link
-                        key={category}
-                        href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="w-full hover:underline py-3 px-2 hover:border transition-transform text-sm hover:bg-gray-100 rounded-md"
-                      >
-                        {category}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+              <SheetContent side="left" className="w-full flex flex-col gap-4">
+                <SheetHeader>
+                  <SheetTitle>Explore Fashion</SheetTitle>
+                </SheetHeader>
+                <Accordion type="single" collapsible className="w-full">
+                  {navItems.map((item) => (
+                    <AccordionItem key={item.title} value={item.title}>
+                      <AccordionTrigger className="w-full text-left font-bold py-2">
+                        {item.title}
+                      </AccordionTrigger>
+                      <AccordionContent className="pl-4">
+                        <ul>
+                          {item.submenus.map((submenu) => (
+                            <li key={submenu} className="py-1">
+                              <Link
+                                href={`#${submenu.toLowerCase().replace(/\s+/g, '-')}`}
+                                className="hover:underline"
+                              >
+                                {submenu}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
               </SheetContent>
             </div>
-            <ul className="hidden lg:flex jusctify-center items-center gap-10">
-              {
-                categories.map((category, index) => (
-                  <li key={index}>
-                    <Link
-                      key={category}
-                      href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="w-full hover:text-yellow-700 transition-all duration-200 ease-in-out"
-                    >
-                      {category}
-                    </Link>
-                  </li>
-                ))
-              }
+
+            <ul className="hidden lg:flex justify-center items-center gap-10">
+              {navItems.map((item) => (
+                <NavigationMenu key={item.title}>
+                  <NavigationMenuList>
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="p-4">
+                          {item.submenus.map((submenu) => (
+                            <li key={submenu} className="py-1">
+                              <NavigationMenuLink>
+                                <Link
+                                  href={`#${submenu.toLowerCase().replace(/\s+/g, '-')}`}
+                                  className="hover:text-yellow-700 transition-all duration-200 ease-in-out"
+                                >
+                                  {submenu}
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+              ))}
             </ul>
+
             <div className="flex items-center space-x-4">
               <div className='flex gap-5 md:pl-5 justify-center items-center'>
                 <div className="cursor-pointer">
@@ -97,7 +153,7 @@ export default function NavItems() {
                 </SignedIn>
                 <SignedOut>
                   <Button className="w-full" asChild>
-                    <Link href={"/sign-in"}>Sign in</Link>
+                    <Link href="/sign-in">Sign in</Link>
                   </Button>
                 </SignedOut>
               </div>
@@ -106,5 +162,5 @@ export default function NavItems() {
         </div>
       </Sheet>
     </nav>
-  )
+  );
 }

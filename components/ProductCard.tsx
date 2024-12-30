@@ -42,7 +42,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                   <img
                     src={image.img}
                     alt={product.name}
-                    className="object-center object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                    className="object-center object-cover w-full h-full transition-transform duration-30  0 group-hover:scale-105"
                   />
                 </Link>
               </CarouselItem>
