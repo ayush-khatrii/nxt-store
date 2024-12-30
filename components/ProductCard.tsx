@@ -26,9 +26,9 @@ function formatNumberWithCommas(number: number) {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+    <div className="rounded-lg border">
       <div className="w-full overflow-hidden rounded-t-lg">
-        <Carousel>
+        <Carousel className="w-full mx-auto ">
           <CarouselContent>
             {product.imageSrc.map((image) => (
               <CarouselItem
@@ -38,13 +38,15 @@ export default function ProductCard({ product }: ProductCardProps) {
                 <div className="absolute bottom-2 left-5 z-[300]">
                   <Badge className="text-xs">Badge</Badge>
                 </div>
-                <Link href={product.href}>
-                  <img
-                    src={image.img}
-                    alt={product.name}
-                    className="object-center object-cover w-full h-full transition-transform duration-30  0 group-hover:scale-105"
-                  />
-                </Link>
+                <div className="relative lg:h-[330px] h-[200px]">
+                  <Link href={product.href}>
+                    <img
+                      src={image.img}
+                      alt={product.name}
+                      className="object-center object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </Link>
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -62,6 +64,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         </span>
         {/* <Button className="w-full text-xs mt-3">Add to Cart</Button> */}
       </div>
-    </div>
+    </div >
   );
 }
