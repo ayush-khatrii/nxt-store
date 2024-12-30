@@ -2,6 +2,7 @@ import Category from '@/components/storefront/Category'
 import FeaturedProducts from '@/components/storefront/FeaturedProducts'
 import NewArrivals from '@/components/storefront/NewArrivals'
 import ProductBanner from '@/components/storefront/ProductBanner'
+import ShopBenefits from '@/components/storefront/ShopBenefits'
 import React from 'react'
 
 export default function page() {
@@ -11,6 +12,7 @@ export default function page() {
       <FeaturedProducts />
       <ProductBanner />
       <NewArrivals />
+      <ShopBenefits />
     </section>
   )
 }
