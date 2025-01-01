@@ -28,7 +28,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="rounded-lg border">
       <div className="w-full overflow-hidden rounded-t-lg">
-        <Carousel className="w-full mx-auto ">
+        <Carousel className="w-full mx-auto group">
           <CarouselContent>
             {product.imageSrc.map((image) => (
               <CarouselItem
@@ -50,8 +50,8 @@ export default function ProductCard({ product }: ProductCardProps) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute z-[200] left-2 top-1/2 transform -translate-y-1/2 group-hover:visible invisible" />
-          <CarouselNext className="absolute right-2 z-[200] top-1/2 transform -translate-y-1/2 group-hover:visible invisible" />
+          <CarouselPrevious className="absolute top-1/2 left-2 z-[300] invisible group-hover:visible" />
+          <CarouselNext className="absolute top-1/2 right-2 z-[300] invisible group-hover:visible" />
         </Carousel>
       </div>
       <div className="p-4 text-left">
@@ -64,6 +64,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         </span>
         {/* <Button className="w-full text-xs mt-3">Add to Cart</Button> */}
       </div>
-    </div >
+    </div>
   );
 }
