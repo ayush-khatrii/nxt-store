@@ -39,7 +39,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                   <Badge className="text-xs">Badge</Badge>
                 </div>
                 <div className="relative lg:h-[330px] h-[200px]">
-                  <Link href={product.href}>
+                  <Link href={`/product/${product.id.toString()}`}>
                     <img
                       src={image.img}
                       alt={product.name}
@@ -56,7 +56,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
       <div className="p-4 text-left">
         <h2 className="sm:text-lg text-base text-foreground truncate">
-          <Link href={product.href}>{product.name}</Link>
+          <Link href={`/product/${product.id.toString()}`}>{product.name}</Link>
         </h2>
         <p className="text-sm text-foreground/80 mt-1 truncate">{product.desc}</p>
         <span className="sm:text-xl text- font-medium text-foreground mt-3 block">
