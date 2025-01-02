@@ -8,6 +8,7 @@ import {
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import formatNumberWithCommas from "@/utils";
 
 interface ProductCardProps {
   product: {
@@ -20,9 +21,7 @@ interface ProductCardProps {
   };
 }
 
-function formatNumberWithCommas(number: number) {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (

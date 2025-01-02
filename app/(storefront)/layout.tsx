@@ -8,7 +8,7 @@ export default function storeFrontLayout({
 }) {
   return (
     <section className="">
-      <header className="px-5 lg:px-10">
+      <header className="">
         <Navbar />
       </header>
       <div className="">

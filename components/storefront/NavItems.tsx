@@ -62,7 +62,7 @@ const navItems = [
 
 export default function NavItems() {
   return (
-    <nav className="lg:px-5">
+    <nav className="w-full border-b px-14">
       <Sheet>
         <div className="">
           <div className="flex items-center justify-between h-16">
