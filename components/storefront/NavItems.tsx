@@ -36,27 +36,24 @@ import {
 } from "@/components/ui/accordion"
 
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { url } from "inspector";
 
 const navItems = [
   {
+    title: "Home",
+    url: "/",
+  },
+  {
+    title: "All Products",
+    url: "/products",
+  },
+  {
     title: "Women",
-    submenus: ["Dresses", "Tops", "Bottoms", "Outerwear", "Accessories"],
+    url: "/products/women",
   },
   {
-    title: "Girls",
-    submenus: ["Casual Wear", "Party Wear", "School Wear"],
-  },
-  {
-    title: "About",
-    submenus: ["Our Story", "Sustainability", "Careers"],
-  },
-  {
-    title: "Indo-Western",
-    submenus: ["Kurtis", "Palazzos", "Sarees", "Fusion Wear"],
-  },
-  {
-    title: "Lehengas",
-    submenus: ["Bridal", "Party", "Festive", "Casual"],
+    title: "All Categories",
+    url: "/products/categories",
   },
 ];
 
@@ -81,56 +78,32 @@ export default function NavItems() {
                   <SheetTitle>Explore Fashion</SheetTitle>
                 </SheetHeader>
                 <Accordion type="single" collapsible className="w-full">
-                  {navItems.map((item) => (
-                    <AccordionItem key={item.title} value={item.title}>
-                      <AccordionTrigger className="w-full text-left font-bold py-2">
-                        {item.title}
-                      </AccordionTrigger>
-                      <AccordionContent className="pl-4">
-                        <ul>
-                          {item.submenus.map((submenu) => (
-                            <li key={submenu} className="py-1">
-                              <Link
-                                href={`#${submenu.toLowerCase()}`}
-                                className="hover:underline"
-                              >
-                                {submenu}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
+                  <ul className="flex justify-center items-start flex-col gap-5">
+                    {navItems.map((item, idx) => (
+                      <li key={idx} className="">
+                        <Link
+                          href={`${item.url}`}
+                          className="hover:underline"
+                        >
+                          {item.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </Accordion>
               </SheetContent>
             </div>
 
             <ul className="hidden lg:flex justify-center items-center gap-10">
-              {navItems.map((item) => (
-                <NavigationMenu key={item.title}>
-                  <NavigationMenuList>
-                    <NavigationMenuItem>
-                      <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <ul className="p-4">
-                          {item.submenus.map((submenu) => (
-                            <li key={submenu} className="py-1">
-                              <NavigationMenuLink>
-                                <Link
-                                  href={`#${submenu.toLowerCase().replace(/\s+/g, '-')}`}
-                                  className="hover:text-yellow-700 transition-all duration-200 ease-in-out"
-                                >
-                                  {submenu}
-                                </Link>
-                              </NavigationMenuLink>
-                            </li>
-                          ))}
-                        </ul>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
-                  </NavigationMenuList>
-                </NavigationMenu>
+              {navItems.map((item, idx) => (
+                <li key={idx}>
+                  <Link
+                    href={`${item.url}`}
+                    className="hover:underline"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
               ))}
             </ul>
 

@@ -3,8 +3,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 
 import formatNumberWithCommas from "@/utils";
-import { useFullscreen } from 'ahooks';
-import { Maximize, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 const data = [
   {
@@ -80,8 +79,8 @@ export default function SingleProductPage({ params }: { params: { id: string } }
               <div className="my-20" id="reviews">
                 <h1 className="text-2xl font-medium">Reviews & Ratings</h1>
                 {
-                  item.reviews?.map((review) => (
-                    <div className="flex justify-center items-start mt-5 flex-col gap-3 w-full">
+                  item.reviews?.map((review, idx) => (
+                    <div key={idx} className="flex justify-center items-start mt-5 flex-col gap-3 w-full">
                       <div className="flex justify-between items-center gap-3">
                         <div className="flex justify-center items-center gap-2">
                           <Avatar>
