@@ -61,7 +61,7 @@ export default function Category() {
         </h2>
         <Button asChild variant="link">
           <Link
-            href="/products/categories"
+            href="/products/"
             className="group inline-flex items-center gap-2 text-sm font-semibold text-blue-600 text-primary"
           >
             Browse all Categories{" "}

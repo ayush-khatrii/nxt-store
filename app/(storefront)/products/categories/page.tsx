@@ -52,11 +52,11 @@ const imgs = [
 
 export default function CategoryPage() {
   return (
-    <section className="max-w-[90rem] mx-auto px-4 md:px-2 my-10">
-      <h2 className="font-bold mb-5 text-xl sm:text-2xl lg:text-3xl">
+    <section className="max-w-[90rem] mx-auto px-5 my-5 ">
+      <h2 className="font-bold mb-5 text-lg sm:text-2xl lg:text-2xl">
         Explore all categories
       </h2>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      <div className="grid gap-5 grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto w-full">
         {imgs.map((item) => (
           <Link href={`${item.href}`}>
             <div
