@@ -1,10 +1,10 @@
+import FeaturedProducts from "@/components/storefront/FeaturedProducts";
 import ProductImage from "@/components/storefront/ProductImage";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 
 import formatNumberWithCommas from "@/utils";
 import { Star } from "lucide-react";
-
 const data = [
   {
     id: 1,
@@ -48,8 +48,10 @@ export default function SingleProductPage({ params }: { params: { id: string } }
   return (
     <section className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
       {
-        data.map((item) => (
-          <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16 mt-5">
+        data.map((item, index) => (
+          <div
+            key={index}
+            className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16 mt-5">
             <ProductImage img={item.src} />
             <div className="mt-10 lg:mt-0">
               <h1 className="text-2xl font-medium">
@@ -112,6 +114,9 @@ export default function SingleProductPage({ params }: { params: { id: string } }
           </div>
         ))
       }
+      <div>
+        <FeaturedProducts />
+      </div>
     </section >
 
   )

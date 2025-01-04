@@ -1,76 +1,63 @@
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { Button } from "../ui/button";
-
 const imgs = [
   {
     id: 1,
     text: "Cord Sets",
-    href: "/products/cord-sets",
+    href: "/products/categories/cord-sets",
     img: "https://placehold.co/1920.png"
   },
   {
     id: 2,
     text: "Kurtis",
-    href: "/products/kurtis",
+    href: "/products/categories/kurtis",
     img: "https://placehold.co/1920.png"
   },
   {
     id: 3,
     text: "Dresses",
-    href: "/products/dresses",
+    href: "/products/categories/dresses",
     img: "https://placehold.co/1920.png"
   },
   {
     id: 4,
     text: "T-Shirts",
-    href: "/products/t-shirts",
+    href: "/products/categories/t-shirts",
     img: "https://placehold.co/1920.png"
   },
   {
     id: 5,
     text: "Cord Sets",
-    href: "/products/cord-sets",
+    href: "/products/categories/cord-sets",
     img: "https://placehold.co/1920.png"
   },
   {
     id: 6,
     text: "Kurtis",
-    href: "/products/kurtis",
+    href: "/products/categories/kurtis",
     img: "https://placehold.co/1920.png"
   },
   {
     id: 7,
     text: "Dresses",
-    href: "/products/dresses",
+    href: "/products/categories/dresses",
     img: "https://placehold.co/1920.png"
   },
   {
     id: 8,
     text: "T-Shirts",
-    href: "/products/t-shirts",
+    href: "/products/categories/t-shirts",
     img: "https://placehold.co/1920.png"
   },
 ];
-export default function Category() {
+
+export default function CategoryPage() {
   return (
-    <section className="py-16">
-      <div className="flex justify-between items-center mb-5">
-        <h2 className="font-extrabold text-xl sm:text-2xl lg:text-3xl">
-          Shop by Category
-        </h2>
-        <Button asChild variant="link">
-          <Link
-            href="/products/categories"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-blue-600 text-primary"
-          >
-            Browse all Categories{" "}
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:underline" />
-          </Link>
-        </Button>
-      </div>
+    <section className="max-w-[90rem] mx-auto px-4 md:px-2 my-10">
+      <h2 className="font-bold mb-5 text-xl sm:text-2xl lg:text-3xl">
+        Explore all categories
+      </h2>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-        {imgs.slice(0, 4).map((item) => (
+        {imgs.map((item) => (
           <Link href={`${item.href}`}>
             <div
               key={item.id}
@@ -94,5 +81,5 @@ export default function Category() {
         ))}
       </div>
     </section>
-  );
+  )
 }
