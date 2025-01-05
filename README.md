@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce Website Project
 
-## Getting Started
+An advanced, feature-rich e-commerce platform built with modern technologies. This project is designed to provide seamless shopping experiences for users and robust management tools for business owners.
 
-First, run the development server:
+## Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Frontend**:
+  - [Next.js](https://nextjs.org/): React framework for server-side rendering and static site generation.
+  - [React.js](https://reactjs.org/): JavaScript library for building user interfaces.
+  - [Tailwind CSS](https://tailwindcss.com/): Utility-first CSS framework for styling.
+  - [ShadCN UI](https://shadcn.dev/): Modern, accessible component library for React.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Backend**:
+  - [PostgreSQL](https://www.postgresql.org/): Relational database system for reliable data storage.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Authentication**:
+  - [Clerk](https://clerk.dev/): Authentication and user management service.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Management Dashboard**:
+  - Built with Next.js and ShadCN UI to allow users to manage their website efficiently.
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+### User-Facing
+- Dynamic product listings with categories and filters.
+- Secure user authentication using Clerk.
+- Fully responsive design for seamless experiences across devices.
+- Fast and efficient navigation with server-side rendering and optimized performance.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Admin Dashboard
+- Manage products: Add, update, and delete products.
+- View orders and customer details.
+- Manage categories and inventory.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Prerequisites
+- Node.js (>= 14.x)
+- PostgreSQL (Ensure it's running locally or have connection details for a remote instance)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Steps
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ayush-khatrii/nxt-store.
+   cd nxt-store
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables:**
+   Create a `.env.local` file in the root of your project and add the following variables:
+   ```env
+   DATABASE_URL=your_postgresql_connection_string
+   NEXT_PUBLIC_CLERK_FRONTEND_API=your_clerk_frontend_api_key
+   CLERK_API_KEY=your_clerk_backend_api_key
+   ```
+
+4. **Run database migrations:**
+   ```bash
+   npx prisma migrate dev
+   ```
+
+5. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+   Access the app at [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+- `npm run dev`: Start the development server.
+- `npm run build`: Build the app for production.
+- `npm start`: Start the production server.
+
+## Contributing
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Open a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+
+Feel free to reach out with questions, suggestions, or contributions!
+
+Thank You! 
