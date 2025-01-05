@@ -1,12 +1,21 @@
-"use client"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+"use client";
+import {
+  Carousel,
+  CarouselMainContainer,
+  SliderMainItem,
+  CarouselThumbsContainer,
+  SliderThumbItem,
+} from "@/components/ui/new-carousel";
+
 export default function ProductImage({ img }: any) {
   return (
-    <div className="w-full h-full" >
-      <Carousel className="w-full h-full">
-        <CarouselContent>
+    <div className="w-full h-full">
+      <Carousel>
+        {/* <CarouselNext className="top-1/2 -translate-y-1/3" />
+        <CarouselPrevious className="top-1/3 -translate-y-1/3" /> */}
+        <CarouselMainContainer>
           {img.map((item: any) => (
-            <CarouselItem key={item.id}>
+            <SliderMainItem key={item.id}>
               <div className="relative">
                 <div className="h-full w-full">
                   <img
@@ -16,16 +25,27 @@ export default function ProductImage({ img }: any) {
                   />
                 </div>
               </div>
-            </CarouselItem>
+            </SliderMainItem>
           ))}
-        </CarouselContent>
-        <div className="flex justify-between p-4 mt-3">
-          <div className="relative flex justify-center items-center ml-10">
-            <CarouselPrevious />
-            <CarouselNext />
-          </div>
-        </div>
+        </CarouselMainContainer>
+        <CarouselThumbsContainer>
+          {img.map((item: any, index: number) => (
+            <SliderThumbItem
+              key={index}
+              index={index}
+              className="bg-transparent"
+            >
+              <div className="outline outline-1 outline-border w-full">
+                <img
+                  src={item.src}
+                  alt=""
+                  className="object-cover object-center w-full h-full" // Adjust height to make thumbnails smaller
+                />
+              </div>
+            </SliderThumbItem>
+          ))}
+        </CarouselThumbsContainer>
       </Carousel>
     </div>
-  )
+  );
 }
