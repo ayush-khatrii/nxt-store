@@ -4,6 +4,7 @@ import Hero from '@/components/storefront/Hero'
 import NewArrivals from '@/components/storefront/NewArrivals'
 import ProductBanner from '@/components/storefront/ProductBanner'
 import ShopBenefits from '@/components/storefront/ShopBenefits'
+import Socials from '@/components/storefront/Socials'
 export default function page() {
   return (
     <section>
@@ -16,6 +17,7 @@ export default function page() {
         <ProductBanner />
         <NewArrivals />
         <ShopBenefits />
+        <Socials />
       </div>
     </section>
   )
