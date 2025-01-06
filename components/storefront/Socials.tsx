@@ -28,7 +28,7 @@ export default function Socials() {
           {
             socials.map((item, idx) => (
               <li key={idx} className="">
-                <a href={item.href} className="text-3xl">
+                <a href={item.href} className="text-2xl lg:text-3xl ">
                   {item.icon}
                 </a>
               </li>

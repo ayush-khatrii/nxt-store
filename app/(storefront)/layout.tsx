@@ -1,3 +1,4 @@
+import Footer from "@/components/storefront/Footer"
 import Hero from "@/components/storefront/Hero"
 import Navbar from "@/components/storefront/Navbar"
 
@@ -13,6 +14,9 @@ export default function storeFrontLayout({
       </header>
       <div className="">
         {children}
+      </div>
+      <div>
+        <Footer />
       </div>
     </section>
   )
