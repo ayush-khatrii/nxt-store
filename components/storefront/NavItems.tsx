@@ -78,7 +78,7 @@ export default function NavItems() {
                   <Search className="h-5 w-5" />
                 </div>
                 <div>
-                  <Link href="#cart" className="hover:text-gray-600 relative flex justify-center items-center gap-2">
+                  <Link href="/cart" className="hover:text-gray-600 relative flex justify-center items-center gap-2">
                     <ShoppingCart className="h-5 w-5" />
                     <span
                       className="absolute -top-2 left-4 text-background h-4 w-4 flex justify-center items-center bg-red-600 rounded-full text-xs">
