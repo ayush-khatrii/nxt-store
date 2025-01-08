@@ -22,17 +22,17 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <ClerkProvider>
+      <ClerkProvider signUpFallbackRedirectUrl={process.env.NEXT_PUBLIC_AUTH_URL} signInFallbackRedirectUrl={process.env.NEXT_PUBLIC_AUTH_URL}>
         <html lang="en">
           <body
             className={`${firaSans.className}  ${firaSans.className} antialiased`}
           >
             <main className="">
               {children}
-            </main> 
+            </main>
           </body>
         </html>
-      </ClerkProvider>
+      </ClerkProvider >
     </>
   );
 }

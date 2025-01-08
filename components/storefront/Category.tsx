@@ -71,9 +71,8 @@ export default function Category() {
       </div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {imgs.slice(0, 4).map((item) => (
-          <Link href={`${item.href}`}>
+          <Link href={`${item.href}`} key={item.id}>
             <div
-              key={item.id}
               className="group relative overflow-hidden rounded-lg shadow-lg"
             >
               <img
