@@ -15,3 +15,31 @@ model User {
   profileImage String
   createdAt    DateTime @default(now())
 }
+
+model Product {
+  id          String        @id @default(uuid())
+  name        String
+  description String
+  status      ProductStatus
+  price       Int
+  images      String[]
+  category    Category      @relation(fields: [categoryId], references: [id])
+  categoryId  String
+  isFeatured  Boolean       @default(false)
+
+  createdAt DateTime @default(now())
+}
+
+enum ProductStatus {
+  published
+  archived
+}
+
+model Category {
+  id          String    @id @default(uuid())
+  name        String    @unique
+  description String?
+  products    Product[]
+
+  createdAt DateTime @default(now())
+}
