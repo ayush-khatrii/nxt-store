@@ -1,3 +1,4 @@
+import { addItemToCart } from "@/app/action";
 import FeaturedProducts from "@/components/storefront/FeaturedProducts";
 import ProductImage from "@/components/storefront/ProductImage";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -43,8 +44,8 @@ const data = [
     ]
   },
 ];
-export default function SingleProductPage({ params }: { params: { id: string } }) {
-
+export default async function SingleProductPage({ params }: { params: { id: string } }) {
+  const addItemToShoppingCart = addItemToCart.bind(null, data[0].id.toString())
   return (
     <section className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
       {
@@ -69,9 +70,12 @@ export default function SingleProductPage({ params }: { params: { id: string } }
                   <Button className="w-full">
                     Buy Now
                   </Button>
-                  <Button size="lg" variant="outline" className="w-full">
-                    Add to Cart
-                  </Button>
+                  <form action={addItemToShoppingCart} className="w-full">
+                    <Button
+                      size="lg" variant="outline" className="w-full">
+                      Add to Cart
+                    </Button>
+                  </form>
                 </div>
               </div>
               <h1 className="text-2xl font-medium mt-5">Product Description</h1>
