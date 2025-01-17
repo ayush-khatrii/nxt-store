@@ -75,4 +75,24 @@ export const addItemToCart = async (productId: string) => {
   }
   await redis.set(`cart-${user.id}`, myCart);
   revalidatePath("/", "layout");
-} 
+};
+
+export const deleteItem = async (productId: String) => {
+  const user = await currentUser();
+
+  if (!user) {
+    return redirect("/sign-in");
+  }
+
+  let cart: Cart | null = await redis.get(`cart-${user.id}`);
+
+  if (cart && cart.items) {
+    const updatedCart: Cart = {
+      userId: user.id,
+      items: cart.items.filter((item) => item.id !== productId)
+    }
+    await redis.set(`cart-${user.id}`, updatedCart);
+  }
+  revalidatePath("/cart");
+}
+

@@ -1,3 +1,4 @@
+import { deleteItem } from "@/app/action";
 import { Button } from "@/components/ui/button";
 import { Cart as cartType } from "@/lib/interfaces";
 import { redis } from "@/lib/redis";
@@ -10,7 +11,6 @@ export default async function Cart() {
   if (!user) {
     return redirect("/");
   }
-
 
   let cartData: cartType | null = await redis.get(`cart-${user.id}`);
 
@@ -64,11 +64,17 @@ export default async function Cart() {
                         <span className="text-sm text-zinc-600">
                           Quantity: {item.quantity}
                         </span>
-                        <button
-                          className="text-red-600 font-medium hover:underline hover:text-red-800 text-sm mt-2 sm:mt-0"
-                        >
-                          remove
-                        </button>
+                        <form action={async () => {
+                          "use server"
+                          await deleteItem(item.id);
+                        }}>
+                          <button
+                            type="submit"
+                            className="text-red-600 font-medium hover:underline hover:text-red-800 text-sm mt-2 sm:mt-0"
+                          >
+                            remove
+                          </button>
+                        </form>
                       </div>
                     </div>
                   </li>
@@ -102,6 +108,6 @@ export default async function Cart() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
