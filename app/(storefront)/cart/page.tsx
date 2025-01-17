@@ -7,10 +7,10 @@ import { redirect } from "next/navigation";
 
 export default async function Cart() {
   const user = await currentUser();
-
   if (!user) {
     return redirect("/");
   }
+
 
   let cartData: cartType | null = await redis.get(`cart-${user.id}`);
 

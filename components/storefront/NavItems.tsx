@@ -11,6 +11,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { redis } from '@/lib/redis';
+import { Cart } from '@/lib/interfaces';
 
 const navItems = [
   {
@@ -27,7 +29,10 @@ const navItems = [
   },
 ];
 
-export default function NavItems() {
+export default function NavItems({ cart }: { cart: Cart | null }) {
+
+  const total = cart?.items.reduce((sum, item) => sum + item.quantity, 0) || 0;
+
   return (
     <nav className="w-full border-b">
       <Sheet>
@@ -82,7 +87,7 @@ export default function NavItems() {
                     <ShoppingCart className="h-5 w-5" />
                     <span
                       className="absolute -top-2 left-4 text-background h-4 w-4 flex justify-center items-center bg-red-600 rounded-full text-xs">
-                      1
+                      {total}
                     </span>
                   </Link>
                 </div>

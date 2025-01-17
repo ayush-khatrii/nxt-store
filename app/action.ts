@@ -3,6 +3,7 @@ import prisma from "@/lib/db";
 import { Cart } from "@/lib/interfaces";
 import { redis } from "@/lib/redis";
 import { currentUser } from "@clerk/nextjs/server";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 
@@ -52,7 +53,7 @@ export const addItemToCart = async (productId: string) => {
   else {
     let itemFound = false;
 
-    // if item alreay in the cart
+    // if item already in the cart
     myCart.items = cart.items.map((item) => {
       if (item.id === productId) {
         itemFound = true;
@@ -73,4 +74,5 @@ export const addItemToCart = async (productId: string) => {
     }
   }
   await redis.set(`cart-${user.id}`, myCart);
+  revalidatePath("/", "layout");
 } 
