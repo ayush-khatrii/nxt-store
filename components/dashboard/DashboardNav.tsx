@@ -1,7 +1,7 @@
 "use client";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, Home, Settings, Users, BarChart2, Inbox, HelpCircle } from "lucide-react";
+import { Menu, Home, Settings, Users, BarChart2, Inbox } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -54,12 +54,12 @@ export default function DashboardNav({
 
 
         {/* Desktop Navigation */}
-        <nav className="mr-auto hidden md:flex items-center space-x-4">
+        <nav className="mr-auto hidden md:flex items-center">
           {menuItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className={`flex items-center gap-2 font-medium rounded-lg px-3 py-2 transition-all  ${path === item.href ? "bg-foreground text-background font-light" : ""}`}
+              className={`flex items-center text-sm gap-2 font-medium rounded-lg px-3 py-2 transition-all  ${path === item.href ? "bg-foreground text-xs text-background font-light" : ""}`}
             >
               <span>{item.label}</span>
             </Link>
