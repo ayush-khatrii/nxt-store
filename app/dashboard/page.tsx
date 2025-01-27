@@ -13,7 +13,7 @@ export default function page() {
           <div className="col-span-2">
             <SalesChart />
           </div>
-          <div className="">
+          <div className="h-full">
             <OrderStatus />
           </div>
         </div>

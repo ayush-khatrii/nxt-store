@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { DollarSign, Package, ShoppingCart, Users, TrendingUp, Clock, User } from 'lucide-react';
+import { DollarSign, Package, ShoppingCart, Users, TrendingUp, Clock, User, Box } from 'lucide-react';
 
 export default function AnalyticsCards() {
 
@@ -8,7 +8,7 @@ export default function AnalyticsCards() {
       title: "Total Profit",
       value: "2523413",
       change: "32% compared to last month",
-      icon: Package,
+      icon: TrendingUp,
       trend: "positive"
     },
     {
@@ -19,17 +19,17 @@ export default function AnalyticsCards() {
       trend: "positive"
     },
     {
-      title: "Total Units Sold",
-      value: "103473",
-      change: "32% compared to last month",
+      title: "Total Orders",
+      value: "+5773",
+      change: "+12.5% from last month",
       icon: Package,
       trend: "positive"
     },
     {
-      title: "Total Orders",
+      title: "Total Products",
       value: "+5773",
       change: "+12.5% from last month",
-      icon: ShoppingCart,
+      icon: Box,
       trend: "positive"
     },
   ];
@@ -38,11 +38,11 @@ export default function AnalyticsCards() {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {cards.map((card, index) => (
         <Card key={index} className="relative hover:shadow-lg transition-all duration-200">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               {card.title}
             </CardTitle>
-            <div className="p-2 bg-zinc-100 rounded-full">
+            <div className="bg-zinc-100 rounded-full">
               <card.icon className="h-4 w-4 text-zinc-600" />
             </div>
           </CardHeader>

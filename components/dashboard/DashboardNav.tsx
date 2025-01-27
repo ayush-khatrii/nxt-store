@@ -24,7 +24,7 @@ export default function DashboardNav({
   const path = usePathname();
 
   return (
-    <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="border-b bg-transparent backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex justify-between flex-row-reverse md:flex-row p-3 items-center px-4 container mx-auto">
         {/* Mobile Menu */}
         <Sheet>

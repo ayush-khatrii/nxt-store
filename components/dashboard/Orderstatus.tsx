@@ -7,7 +7,7 @@ const OrderStatus = () => {
   const data = [
     { name: 'Shipped', value: 320, color: 'hsl(var(--chart-1))' },
     { name: 'Processing', value: 540, color: 'hsl(var(--chart-2))' },
-    { name: 'Cancelled', value: 140, color: 'hsl(var(--chart-3))' }
+    { name: 'Cancelled', value: 140, color: 'hsl(var(--chart-4))' }
   ];
 
   return (
