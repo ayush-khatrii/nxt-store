@@ -6,17 +6,19 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { noto_sans } from "@/font/font";
+import ThemeSwitchButton from "../ThemeSwitcher";
 
 export default function DashboardNav({
   title = "Dashboard",
   menuItems = [
     { icon: Home, label: "Home", href: "/dashboard" },
-    { icon: BarChart2, label: "Orders", href: "/orders" },
-    { icon: Users, label: "Products", href: "/products" },
-    { icon: Inbox, label: "Categories", href: "/categories" },
-    { icon: Inbox, label: "Banners", href: "/banners" },
-    { icon: Settings, label: "Socials", href: "/socials" },
-    { icon: Settings, label: "Settings", href: "/settings" },
+    { icon: BarChart2, label: "Orders", href: "/dashboard/orders" },
+    { icon: Users, label: "Products", href: "/dashboard/products" },
+    { icon: Inbox, label: "Categories", href: "/dashboard/categories" },
+    { icon: Inbox, label: "Banners", href: "/dashboard/banners" },
+    { icon: Settings, label: "Socials", href: "/dashboard/socials" },
+    { icon: Settings, label: "Settings", href: "/dashboard/settings" },
   ]
 }) {
 
@@ -24,8 +26,8 @@ export default function DashboardNav({
   const path = usePathname();
 
   return (
-    <header className="border-b bg-transparent backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="flex justify-between flex-row-reverse md:flex-row p-3 items-center px-4 container mx-auto">
+    <header className={`${noto_sans.className} border-b bg-transparent backdrop-blur supports-[backdrop-filter]:bg-background/60`}>
+      <div className="flex justify-between flex-row-reverse md:flex-row py-3 px-5 items-center container mx-auto">
         {/* Mobile Menu */}
         <Sheet>
           <SheetTrigger asChild>
@@ -54,18 +56,20 @@ export default function DashboardNav({
 
 
         {/* Desktop Navigation */}
-        <nav className="mr-auto hidden md:flex items-center">
+        <nav className="mr-auto hidden md:flex gap-3 items-center">
           {menuItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className={`flex items-center text-sm gap-2 font-medium rounded-lg px-3 py-2 transition-all  ${path === item.href ? "bg-foreground text-xs text-background font-light" : ""}`}
+              className={`flex items-center text-sm gap-2 font-medium rounded-lg p-2 transition-all  ${path === item.href ? "bg-foreground text-xs text-background font-light" : ""}`}
             >
               <span>{item.label}</span>
             </Link>
           ))}
         </nav>
-
+        <div className="mx-2">
+          <ThemeSwitchButton></ThemeSwitchButton>
+        </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Avatar className="cursor-pointer border-2 border-zinc-400">

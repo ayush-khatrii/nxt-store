@@ -42,9 +42,7 @@ export default function AnalyticsCards() {
             <CardTitle className="text-sm font-medium text-muted-foreground">
               {card.title}
             </CardTitle>
-            <div className="bg-zinc-100 rounded-full">
-              <card.icon className="h-4 w-4 text-zinc-600" />
-            </div>
+            <card.icon className="h-4 w-4 text-foreground/50" />
           </CardHeader>
           <CardContent>
             <div className="space-y-3">

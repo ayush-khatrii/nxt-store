@@ -1,12 +1,19 @@
 import { ReactNode } from "react";
-import { Noto_Sans } from 'next/font/google';
-
-const noto_sans = Noto_Sans({ subsets: ['latin'] });
+import DashboardNav from "@/components/dashboard/DashboardNav";
+import { noto_sans } from "@/font/font";
+import { Providers } from "../providers";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
-    <div className={`${noto_sans.className} h-screen`}>
-      {children}
-    </div>
+    <>
+      <Providers>
+        <section className="">
+          <DashboardNav />
+          <div className={`${noto_sans.className} px-3 py-4 h-screen`}>
+            {children}
+          </div>
+        </section>
+      </Providers>
+    </>
   )
 }
