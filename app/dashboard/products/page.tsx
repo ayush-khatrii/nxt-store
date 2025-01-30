@@ -64,11 +64,11 @@ export default function page() {
           </Link>
         </Button>
       </div>
-      <div className="overflow-x-auto p-3 border text-sm">
+      <div className="overflow-x-auto border text-sm">
         <Table>
-          <TableHeader className="">
+          <TableHeader>
             <TableRow>
-              <TableHead className="">Image</TableHead>
+              <TableHead className="pl-4">Image</TableHead>
               <TableHead>Title</TableHead>
               <TableHead>Price</TableHead>
               <TableHead>Status</TableHead>
@@ -81,7 +81,7 @@ export default function page() {
               products.map((product) => (
                 <TableRow key={product.title}>
                   <TableCell className="font-medium">
-                    <div className="w-20 h h-20">
+                    <div className="w-20 h-20">
                       <img
                         src={product.img}
                         className="object-cover w-full h-full rounded-lg"
