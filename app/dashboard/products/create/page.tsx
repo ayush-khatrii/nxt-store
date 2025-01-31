@@ -39,7 +39,7 @@ const CreateProductPage: React.FC = () => {
   };
 
   return (
-    <section>
+    <section className=''>
       <div className='flex gap-3 mt-5 pl-4'>
         <Button asChild variant={"outline"} size="icon">
           <Link href={`/dashboard/products`}>
@@ -87,7 +87,7 @@ const CreateProductPage: React.FC = () => {
             <label className="text-sm ont-medium">Status</label>
             <Select>
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select a fruit" />
+                <SelectValue placeholder="Select status" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>

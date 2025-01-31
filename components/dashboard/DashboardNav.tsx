@@ -45,7 +45,7 @@ export default function DashboardNav({
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`flex items-center gap-2 rounded-lg px-3 py-2 transition-all  ${path === item.href ? "bg-foreground text-background font-light" : ""}`}
+                  className={`flex items-center gap-2 rounded-lg px-3 py-2 transition-all duration-200  ${path === item.href ? "bg-foreground text-background font-light" : ""}`}
                 >
                   {item.label}
                 </Link>
