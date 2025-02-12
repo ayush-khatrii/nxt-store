@@ -1,4 +1,4 @@
-import { addItemToCart } from "@/app/action";
+import { addItemToCart } from "@/app/actions";
 import FeaturedProducts from "@/components/storefront/FeaturedProducts";
 import ProductImage from "@/components/storefront/ProductImage";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";

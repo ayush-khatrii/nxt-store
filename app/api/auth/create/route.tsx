@@ -4,8 +4,8 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   const user = await currentUser();
-  if (!user || !user.id || user === null) {
-    throw new Error("Something went wong!!");
+  if (!user || !user.id) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
   let dbUser = await prisma.user.findUnique({
@@ -25,5 +25,6 @@ export async function GET() {
       }
     });
   }
+
   return NextResponse.redirect("http://localhost:3000");
 }

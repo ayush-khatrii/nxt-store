@@ -1,4 +1,4 @@
-import { deleteItem } from "@/app/action";
+import { deleteItem } from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import { Cart as cartType } from "@/lib/interfaces";
 import { redis } from "@/lib/redis";

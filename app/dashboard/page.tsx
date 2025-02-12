@@ -1,5 +1,4 @@
 import AnalyticsCards from "@/components/dashboard/AnalyticsCards";
-import DashboardNav from "@/components/dashboard/DashboardNav";
 import SalesChart from "@/components/dashboard/Saleschart";
 import OrderStatus from "@/components/dashboard/Orderstatus";
 

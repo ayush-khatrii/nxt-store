@@ -40,6 +40,4 @@ model Category {
   name        String    @unique
   description String?
   products    Product[]
-
-  createdAt DateTime @default(now())
 }

@@ -8,3 +8,8 @@ export type Cart = {
     img: string;
   }>;
 }
+export type ProductCategory = {
+  id: string;
+  name: string;
+  description: string | null;
+}
