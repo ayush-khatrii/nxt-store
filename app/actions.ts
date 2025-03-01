@@ -6,7 +6,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { parseWithZod } from "@conform-to/zod"
-import { productScehma } from "@/lib/zodSchema";
+import { categoryScehma, productScehma } from "@/lib/zodSchema";
 import { v2 as cloudinary } from "cloudinary"
 
 const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
@@ -164,7 +164,7 @@ export async function CreateCategory(currentState: unknown, foramData: FormData)
     return redirect("/");
   }
   const submission = parseWithZod(foramData, {
-    schema: productScehma
+    schema: categoryScehma
   });
   if (submission.status !== 'success') {
     return submission.reply();
@@ -177,5 +177,7 @@ export async function CreateCategory(currentState: unknown, foramData: FormData)
     }
   });
 
-  redirect("/dashboard/products");
+  revalidatePath("/dashboard");
+  redirect("/dashboard/categories");
+
 }

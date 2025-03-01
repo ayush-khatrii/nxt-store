@@ -1,59 +1,36 @@
-"use client"
-import { CreateCategory } from "@/app/actions";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { categoryScehma } from "@/lib/zodSchema";
-import { useForm } from "@conform-to/react";
-import { parseWithZod } from "@conform-to/zod";
-import { useActionState } from "react";
+import { Card } from "@/components/ui/card";
+import prisma from "@/lib/db";
+import Link from "next/link";
 
-export default function page() {
-  const [lastResult, action] = useActionState(CreateCategory, undefined);
-  const [form, fields] = useForm({
-    lastResult,
-    onValidate({ formData }) {
-      return parseWithZod(formData, { schema: categoryScehma });
-    },
-    shouldValidate: "onBlur",
-    shouldRevalidate: "onInput",
-  });
+export default async function page() {
+  const allCategories = await prisma.category.findMany();
 
   return (
-    <section className="">
-      <div className='flex gap-3 pl-4'>
-        <h1 className="text-2xl font-bold mb-10">Create New Category</h1>
-      </div>
-      <form id={form.id} onSubmit={form.onSubmit} action={action} className="container mx-auto p-4 space-y-4">
-        <div>
-          <label className="text-sm font-medium mb-2">Category Title </label>
-          <Input
-            key={fields.name.key}
-            name={fields.name.name}
-            defaultValue={fields.name.initialValue}
-            className="mt-3 w-full"
-            type="text"
-            placeholder="Write product title"
-            required
-          />
+    <>
+      <section className="container mx-auto px-5">
+        <div className='flex flex-col md:flex-row justify-between items-center gap-3'>
+          <h1 className="text-base lg:text-2xl font-bold">All Categories</h1>
+          <Link href="/dashboard/categories/create">
+            <Button>
+              Create Category
+            </Button>
+          </Link>
         </div>
-        <div>
-          <label className="text-sm font-medium mb-2">Category Description (optional)</label>
-          <Textarea
-            key={fields.description.key}
-            name={fields.description.name}
-            defaultValue={fields.description.initialValue}
-            className='mt-3' placeholder="Write category description..." />
+        <div className="grid grid-cols-1 py-5 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 gap-5">
+          {
+            allCategories.map((item) => (
+              <>
+                <Card
+                  key={item.id}
+                  className="flex capitalize w-full h-40 justify-center items-center mx-auto p-4">
+                  {item.name}
+                </Card>
+              </>
+            ))
+          }
         </div>
-        <div>
-          <Button
-            type="submit"
-            className='w-full'
-          >
-            Create Category
-          </Button>
-        </div>
-      </form>
-    </section>
+      </section>
+    </>
   )
 }
