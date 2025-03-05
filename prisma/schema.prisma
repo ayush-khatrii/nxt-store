@@ -41,3 +41,9 @@ model Category {
   description String?
   products    Product[]
 }
+
+model Banner {
+  id         String   @id @default(uuid())
+  herobanner String[]
+  banner     String
+}

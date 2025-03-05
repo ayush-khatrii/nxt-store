@@ -14,3 +14,8 @@ export const categoryScehma = z.object({
   name: z.string(),
   description: z.string().optional(),
 })
+
+export const bannerScehma = z.object({
+  heroBanners: z.array(z.string()).min(1, "Please upload at least one image").max(3, "Maximum 3 hero banner images allowed"),
+  bannerImage: z.string().min(1, "Please upload at least one image"),
+});

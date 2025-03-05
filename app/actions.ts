@@ -6,7 +6,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { parseWithZod } from "@conform-to/zod"
-import { categoryScehma, productScehma } from "@/lib/zodSchema";
+import { bannerScehma, categoryScehma, productScehma } from "@/lib/zodSchema";
 import { v2 as cloudinary } from "cloudinary"
 
 const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
@@ -110,14 +110,14 @@ export const deleteItem = async (productId: String) => {
   revalidatePath("/cart");
 }
 
-export async function CreateProduct(currentState: unknown, foramData: FormData) {
+export async function CreateProduct(currentState: unknown, formData: FormData) {
   const user = await currentUser();
   const userEmail = user?.emailAddresses[0]?.emailAddress;
 
   if (!user || userEmail !== ADMIN_EMAIL) {
     return redirect("/");
   }
-  const submission = parseWithZod(foramData, {
+  const submission = parseWithZod(formData, {
     schema: productScehma
   });
   if (submission.status !== 'success') {
@@ -180,4 +180,31 @@ export async function CreateCategory(currentState: unknown, foramData: FormData)
   revalidatePath("/dashboard");
   redirect("/dashboard/categories");
 
+}
+
+export async function BannerImage(currentState: unknown, formData: FormData) {
+  const user = await currentUser();
+  const userEmail = user?.emailAddresses[0]?.emailAddress;
+
+  if (!user || userEmail !== ADMIN_EMAIL) {
+    return redirect("/");
+  }
+  const submission = parseWithZod(formData, {
+    schema: bannerScehma
+  });
+  console.log(submission);
+  if (submission.status !== 'success') {
+    return submission.reply();
+  }
+
+  const flattenImagesUrls = submission.value.heroBanners.flatMap((item) => item.split(',').map((url) => url.trim()));
+
+  await prisma.banner.create({
+    data: {
+      herobanner: flattenImagesUrls,
+      banner: submission.value.bannerImage
+    }
+  });
+
+  redirect("/dashboard/banners");
 }
